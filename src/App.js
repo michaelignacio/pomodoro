@@ -1,25 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import InfoBox from './components/InfoBox';
+import Timer from './components/Timer';
+import Controls from './components/Controls';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 100%;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+`
 
 function App() {
+  const [breakLength, setBreakLength] = useState(5);
+  const [sessionLength, setSessionLength] = useState(5);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <InfoBox
+        increaseBreakLength={() => setBreakLength(breakLength + 1)}
+        decreaseBreakLength={() => setBreakLength(breakLength - 1)}
+        length={breakLength}
+        />
+      <Timer />
+      <Controls />
+    </Container>
   );
 }
 
