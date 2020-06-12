@@ -1,19 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import Wrapper from './Wrapper';
+import Clicker from './Clicker';
 
-const Wrapper = styled.div`
-  display: flex;
-
-  span {
-    margin: 0 20px;
-  }
-`
-
-const SessionControls = () => (
+const SessionControls = (props) => (
   <Wrapper>
-    <span id="session-decrement">up</span>
-    <span>value</span>
-    <span id="session-increment">down</span>
+    <Clicker id="session-decrement" onClick={props.decreaseSessionLength}>down</Clicker>
+    <span id="session-length">{props.length}</span>
+    <Clicker id="session-increment" onClick={props.increaseSessionLength}>up</Clicker>
   </Wrapper>
 );
 

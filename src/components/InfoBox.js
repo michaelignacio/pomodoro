@@ -2,10 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import BreakControls from './BreakControls';
 import SessionControls from './SessionControls';
-
-const Wrapper = styled.div`
-	display: flex;
-`
+import Wrapper from './Wrapper';
 
 const Box = styled.div`
 	display: flex;
@@ -18,16 +15,19 @@ const InfoBox = (props) => (
 	<Wrapper>
 		<Box>
 			<p id="break-label">Break Length</p>
-			{console.log(props)}
 			<BreakControls
-				length={props.length}
+				length={props.breakLength}
 				decreaseBreakLength={props.decreaseBreakLength}
 				increaseBreakLength={props.increaseBreakLength}
 			/>
 		</Box>
 		<Box>
 			<p id="session-label">Session Length</p>
-			<SessionControls />
+			<SessionControls
+				length={props.sessionLength}
+				decreaseSessionLength={props.decreaseSessionLength}
+				increaseSessionLength={props.increaseSessionLength}
+			/>
 		</Box>
 	</Wrapper>
 );

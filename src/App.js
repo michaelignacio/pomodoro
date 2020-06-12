@@ -15,16 +15,21 @@ const Container = styled.div`
 
 function App() {
   const [breakLength, setBreakLength] = useState(5);
-  const [sessionLength, setSessionLength] = useState(5);
+  const [sessionLength, setSessionLength] = useState(25);
+  // const [runningSession, setRunningSession] = useState(sessionLength);
 
   return (
     <Container>
       <InfoBox
+        breakLength={breakLength}
+        // implement running/not running yet conditional here
         increaseBreakLength={() => setBreakLength(breakLength + 1)}
         decreaseBreakLength={() => setBreakLength(breakLength - 1)}
-        length={breakLength}
+        sessionLength={sessionLength}
+        increaseSessionLength={() => setSessionLength(sessionLength + 1)}
+        decreaseSessionLength={() => setSessionLength(sessionLength - 1)}
         />
-      <Timer />
+      <Timer data={sessionLength} />
       <Controls />
     </Container>
   );

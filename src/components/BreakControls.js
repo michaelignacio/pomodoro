@@ -1,19 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const Wrapper = styled.div`
-  display: flex;
-
-  span {
-    margin: 0 20px;
-  }
-`
+import Wrapper from './Wrapper';
+import Clicker from './Clicker';
 
 const BreakControls = (props) => (
   <Wrapper>
-    <span id="break-decrement" onClick={props.decreaseBreakLength}>down</span>
+    <Clicker id="break-decrement" onClick={props.decreaseBreakLength}>down</Clicker>
     <span id="break-length">{props.length}</span>
-    <span id="break-increment" onClick={props.increaseBreakLength}>up</span>
+    <Clicker id="break-increment" onClick={props.increaseBreakLength}>up</Clicker>
   </Wrapper>
 );
 
