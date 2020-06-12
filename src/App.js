@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import InfoBox from './components/InfoBox';
-import Timer from './components/Timer';
+import TimerLabel from './components/TimerLabel';
 import Controls from './components/Controls';
 
 const Container = styled.div`
@@ -16,7 +16,7 @@ const Container = styled.div`
 function App() {
   const [breakLength, setBreakLength] = useState(5);
   const [sessionLength, setSessionLength] = useState(25);
-  // const [runningSession, setRunningSession] = useState(sessionLength);
+  const [runningSession, setRunningSession] = useState(25);
 
   return (
     <Container>
@@ -29,8 +29,10 @@ function App() {
         increaseSessionLength={() => setSessionLength(sessionLength + 1)}
         decreaseSessionLength={() => setSessionLength(sessionLength - 1)}
         />
-      <Timer data={sessionLength} />
-      <Controls />
+      <TimerLabel duration={sessionLength} />
+      <Controls
+        handleReset={() => setRunningSession(sessionLength)}
+      />
     </Container>
   );
 }
